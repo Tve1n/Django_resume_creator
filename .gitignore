@@ -6,7 +6,6 @@ dist/
 wheels/
 *.egg-info
 .env
-my_project/templates/pass
 .python-version
 .ruff_cache
 # Virtual environments
