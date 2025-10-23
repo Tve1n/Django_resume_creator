@@ -1,0 +1,58 @@
+{% extends 'resume/base.html' %}
+
+{% block title %}Создание резюме{% endblock %}
+
+{% block content %}
+<h2>Создайте ваше резюме</h2>
+<form method="post">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <h3>Личная информация</h3>
+        {{ form.full_name.label_tag }}
+        {{ form.full_name }}
+        
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        
+        {{ form.phone.label_tag }}
+        {{ form.phone }}
+        
+        {{ form.address.label_tag }}
+        {{ form.address }}
+    </div>
+    
+    <div class="form-group">
+        <h3>О себе</h3>
+        {{ form.summary.label_tag }}
+        {{ form.summary }}
+        <small>{{ form.summary.help_text }}</small>
+    </div>
+    
+    <div class="form-group">
+        <h3>Образование</h3>
+        {{ form.education.label_tag }}
+        {{ form.education }}
+    </div>
+    
+    <div class="form-group">
+        <h3>Опыт работы</h3>
+        {{ form.experience.label_tag }}
+        {{ form.experience }}
+    </div>
+    
+    <div class="form-group">
+        <h3>Навыки</h3>
+        {{ form.skills.label_tag }}
+        {{ form.skills }}
+    </div>
+    
+    <div class="form-group">
+        <h3>Языки</h3>
+        {{ form.languages.label_tag }}
+        {{ form.languages }}
+    </div>
+    
+    <button type="submit" class="btn">Сохранить резюме</button>
+</form>
+{% endblock %}
