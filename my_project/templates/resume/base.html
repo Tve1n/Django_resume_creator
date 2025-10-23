@@ -5,14 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Мое Резюме{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'my_project/static/resumes/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'resume/css/style.css' %}">
 </head>
 <body>
     <nav class="nav">
         <div class="container">
-            <div class="nav-brand">
-                    MyResume
-            </div>
             <div class="nav-links">
                 <a href="{% url 'resume_form' %}">Создать резюме</a>
                 <a href="{% url 'resume_list' %}">Все резюме</a>
