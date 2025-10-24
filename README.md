@@ -1,6 +1,6 @@
 ## Установка
 Для установки вам потребуется Python версии 3.12 и выше и менеджер пакетов uv
-Установка
+
 1) Скачайте репозиторий
 ```
 git clone https://github.com/Tve1n/Django_resume_creator.git
