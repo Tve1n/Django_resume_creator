@@ -3,26 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Мое Резюме{% endblock %}</title>
+    <title>{% block title %}MyResume - Создайте профессиональное резюме{% endblock %}</title>
+    
     {% load static %}
     <link rel="stylesheet" href="{% static 'resume/css/style.css' %}">
+
 </head>
 <body>
-    <nav class="nav">
+    <header class="header">
         <div class="container">
-            <div class="nav-links">
-                <a href="{% url 'resume_form' %}">Создать резюме</a>
-                <a href="{% url 'resume_list' %}">Все резюме</a>
-                <a href="{% url 'resume_view' %}">Посмотреть резюме</a>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-file-alt"></i>
+                    <span class="logo-text">MyResume</span>
+                </div>
+                <nav class="main-nav">
+                    <a href="{% url 'resume_form' %}" class="nav-link">
+                        <i class="fas fa-plus-circle"></i>
+                        Создать резюме
+                    </a>
+                    <a href="{% url 'resume_list' %}" class="nav-link">
+                        <i class="fas fa-list"></i>
+                        Все резюме
+                    </a>
+                </nav>
             </div>
         </div>
-    </nav>
-    
-    <div class="container">
-        <div class="content-card">
+    </header>
+
+    <main class="main-content">
+        <div class="container">
             {% block content %}
             {% endblock %}
         </div>
-    </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MyResume</h3>
+                    <p>Создавайте резюме легко и быстро</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'resume_form' %}">Создать резюме</a></li>
+                        <li><a href="{% url 'resume_list' %}">Все резюме</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Помощь</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Как заполнить резюме</a></li>
+                        <li><a href="#">Советы по оформлению</a></li>
+                        <li><a href="#">Частые вопросы</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@myresume.com</p>
+                        <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Москва, Россия</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 MyResume. Все права защищены.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

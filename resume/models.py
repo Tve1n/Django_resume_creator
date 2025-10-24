@@ -2,9 +2,20 @@ from django.db import models
 
 
 class Resume(models.Model):
-    full_name = models.CharField(max_length=100, verbose_name="ФИО")
-    email = models.EmailField(verbose_name="Email")
-    phone = models.CharField(max_length=20, verbose_name="Телефон")
+    full_name = models.CharField(
+        max_length=100, 
+        verbose_name="ФИО",
+        help_text="Введите фамилию, имя и отчество через пробел"
+    )
+    email = models.EmailField(
+        verbose_name="Email",
+        help_text="Введите корректный email адрес"
+    )
+    phone = models.CharField(
+        max_length=20, 
+        verbose_name="Телефон",
+        help_text="Введите номер телефона (11 цифр, начинается с 7 или 8)"
+    )
     address = models.TextField(verbose_name="Адрес")
     summary = models.TextField(
         verbose_name="О себе",

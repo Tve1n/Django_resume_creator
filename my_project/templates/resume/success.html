@@ -1,8 +1,20 @@
 {% extends 'resume/base.html' %}
 
 {% block content %}
-<h2>Резюме успешно сохранено!</h2>
-<p>Ваше резюме было успешно добавлено в базу данных.</p>
-<a href="{% url 'resume_view' %}" class="btn">Посмотреть резюме</a>
-<a href="{% url 'resume_form' %}" class="btn">Создать еще одно</a>
+<div class="text-center">
+    <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+    </div>
+    <h2>Резюме успешно сохранено!</h2>
+    <p>Ваше резюме было успешно добавлено в базу данных.</p>
+    
+    <div class="mt-4">
+        <a href="{% url 'resume_form' %}" class="btn">
+            <i class="fas fa-plus-circle"></i> Создать еще одно
+        </a>
+        <a href="{% url 'resume_list' %}" class="btn btn-secondary">
+            <i class="fas fa-list"></i> Все резюме
+        </a>
+    </div>
+</div>
 {% endblock %}

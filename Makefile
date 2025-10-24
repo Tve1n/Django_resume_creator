@@ -1,6 +1,9 @@
 install:
 	uv sync
 
+lint:
+	uv run ruff check .
+
 migrate:
 	uv run python manage.py migrate --noinput
 

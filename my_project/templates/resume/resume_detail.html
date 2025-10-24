@@ -1,0 +1,47 @@
+{% extends 'resume/base.html' %}
+
+{% block title %}Резюме - {{ resume.full_name }}{% endblock %}
+
+{% block content %}
+<div class="resume-header">
+    <div class="text-center mb-5">
+        <h1 class="resume-title">{{ resume.full_name }}</h1>
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> {{ resume.email }}</p>
+            <p><i class="fas fa-phone"></i> {{ resume.phone }}</p>
+            <p><i class="fas fa-map-marker-alt"></i> {{ resume.address }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="resume-section">
+    <h3>О себе</h3>
+    <p>{{ resume.summary|linebreaks }}</p>
+</div>
+
+<div class="resume-section">
+    <h3>Образование</h3>
+    <p>{{ resume.education|linebreaks }}</p>
+</div>
+
+<div class="resume-section">
+    <h3>Опыт работы</h3>
+    <p>{{ resume.experience|linebreaks }}</p>
+</div>
+
+{% if resume.languages %}
+<div class="resume-section">
+    <h3>Языки</h3>
+    <p>{{ resume.languages|linebreaks }}</p>
+</div>
+{% endif %}
+
+<div class="text-center mt-4">
+    <a href="{% url 'resume_list' %}" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Назад к списку
+    </a>
+    <a href="{% url 'resume_form' %}" class="btn">
+        <i class="fas fa-plus-circle"></i> Создать новое резюме
+    </a>
+</div>
+{% endblock %}

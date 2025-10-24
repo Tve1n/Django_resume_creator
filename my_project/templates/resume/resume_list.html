@@ -3,15 +3,29 @@
 {% block title %}Все резюме{% endblock %}
 
 {% block content %}
-<h2>Все резюме</h2>
+<div class="list-header">
+    <h2><i class="fas fa-list"></i> Все резюме</h2>
+    <p>Список всех созданных резюме. Нажмите на резюме для просмотра деталей.</p>
+</div>
+
 {% for resume in resumes %}
-<div class="resume-section">
-    <h3><a href="{% url 'resume_detail' resume.pk %}">{{ resume.full_name }}</a></h3>
+<div class="resume-item">
+    <h3>{{ resume.full_name }}</h3>
     <p><strong>Email:</strong> {{ resume.email }}</p>
+    <p><strong>Телефон:</strong> {{ resume.phone }}</p>
     <p><strong>Создано:</strong> {{ resume.created_at|date:"d.m.Y H:i" }}</p>
-    <a href="{% url 'resume_detail' resume.pk %}" class="btn">Просмотреть</a>
+    <a href="{% url 'resume_detail' resume.pk %}" class="btn btn-small">
+        <i class="fas fa-eye"></i> Просмотреть
+    </a>
 </div>
 {% empty %}
-<p>Резюме еще не созданы.</p>
+<div class="empty-state">
+    <i class="fas fa-folder-open"></i>
+    <h3>Резюме еще не созданы</h3>
+    <p>Будьте первым, кто создаст резюме!</p>
+    <a href="{% url 'resume_form' %}" class="btn">
+        <i class="fas fa-plus-circle"></i> Создать первое резюме
+    </a>
+</div>
 {% endfor %}
 {% endblock %}

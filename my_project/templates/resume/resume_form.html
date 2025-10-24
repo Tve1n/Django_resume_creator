@@ -3,50 +3,133 @@
 {% block title %}Создание резюме{% endblock %}
 
 {% block content %}
-<h2>Создайте ваше резюме</h2>
-<form method="post">
+<div class="form-header">
+    <h2><i class="fas fa-plus-circle"></i> Создайте ваше резюме</h2>
+    <p>Заполните все поля внимательно. Поля помеченные * обязательны для заполнения.</p>
+</div>
+
+<form method="post" id="resumeForm">
     {% csrf_token %}
+
+    {% if form.non_field_errors %}
+    <div class="alert alert-error">
+        <i class="fas fa-exclamation-triangle"></i>
+        {% for error in form.non_field_errors %}
+            {{ error }}
+        {% endfor %}
+    </div>
+    {% endif %}
     
-    <div class="form-group">
-        <h3>Личная информация</h3>
-        {{ form.full_name.label_tag }}
-        {{ form.full_name }}
+    <div class="form-section">
+        <h3><i class="fas fa-user"></i> Личная информация</h3>
         
-        {{ form.email.label_tag }}
-        {{ form.email }}
+        <div class="form-group {% if form.full_name.errors %}error{% endif %}">
+            {{ form.full_name.label_tag }}
+            {{ form.full_name }}
+            {% if form.full_name.errors %}
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                {% for error in form.full_name.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="help-text">{{ form.full_name.help_text }}</div>
+        </div>
         
-        {{ form.phone.label_tag }}
-        {{ form.phone }}
+        <div class="form-group {% if form.email.errors %}error{% endif %}">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {% if form.email.errors %}
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                {% for error in form.email.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="help-text">{{ form.email.help_text }}</div>
+        </div>
         
-        {{ form.address.label_tag }}
-        {{ form.address }}
+        <div class="form-group {% if form.phone.errors %}error{% endif %}">
+            {{ form.phone.label_tag }}
+            {{ form.phone }}
+            {% if form.phone.errors %}
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                {% for error in form.phone.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="help-text">{{ form.phone.help_text }}</div>
+        </div>
+        
+        <div class="form-group {% if form.address.errors %}error{% endif %}">
+            {{ form.address.label_tag }}
+            {{ form.address }}
+            {% if form.address.errors %}
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                {% for error in form.address.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
     </div>
     
-    <div class="form-group">
-        <h3>О себе</h3>
-        {{ form.summary.label_tag }}
-        {{ form.summary }}
-        <small>{{ form.summary.help_text }}</small>
+    <div class="form-section">
+        <h3><i class="fas fa-file-alt"></i> О себе</h3>
+        <div class="form-group {% if form.summary.errors %}error{% endif %}">
+            {{ form.summary.label_tag }}
+            {{ form.summary }}
+            {% if form.summary.errors %}
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                {% for error in form.summary.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="help-text">{{ form.summary.help_text }}</div>
+        </div>
     </div>
     
-    <div class="form-group">
-        <h3>Образование</h3>
-        {{ form.education.label_tag }}
-        {{ form.education }}
+    <div class="form-section">
+        <h3><i class="fas fa-graduation-cap"></i> Образование</h3>
+        <div class="form-group">
+            {{ form.education.label_tag }}
+            {{ form.education }}
+            <div class="help-text">{{ form.education.help_text }}</div>
+        </div>
     </div>
     
-    <div class="form-group">
-        <h3>Опыт работы</h3>
-        {{ form.experience.label_tag }}
-        {{ form.experience }}
+    <div class="form-section">
+        <h3><i class="fas fa-briefcase"></i> Опыт работы</h3>
+        <div class="form-group">
+            {{ form.experience.label_tag }}
+            {{ form.experience }}
+            <div class="help-text">{{ form.experience.help_text }}</div>
+        </div>
     </div>
     
-    <div class="form-group">
-        <h3>Языки</h3>
-        {{ form.languages.label_tag }}
-        {{ form.languages }}
+    <div class="form-section">
+        <h3><i class="fas fa-language"></i> Языки</h3>
+        <div class="form-group">
+            {{ form.languages.label_tag }}
+            {{ form.languages }}
+            <div class="help-text">{{ form.languages.help_text }}</div>
+        </div>
     </div>
     
-    <button type="submit" class="btn">Сохранить резюме</button>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Сохранить резюме
+        </button>
+        <button type="reset" class="btn btn-secondary">
+            <i class="fas fa-undo"></i> Очистить форму
+        </button>
+    </div>
 </form>
 {% endblock %}

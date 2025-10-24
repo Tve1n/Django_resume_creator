@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
 from .forms import ResumeForm
 from .models import Resume
 
@@ -16,15 +15,6 @@ def resume_form(request):
     return render(request, 'resume/resume_form.html', {'form': form})
 
 
-def resume_view(request):
-    # Получаем последнее добавленное резюме
-    resume = Resume.objects.last()
-    if not resume:
-        return HttpResponse("Резюме еще не создано")
-    
-    return render(request, 'resume/resume_view.html', {'resume': resume})
-
-
 def resume_success(request):
     # Cтраница успеха
     return render(request, 'resume/success.html')
@@ -39,4 +29,4 @@ def resume_list(request):
 def resume_detail(request, pk):
     # Страница конкретного резюме
     resume = get_object_or_404(Resume, pk=pk)
-    return render(request, 'resume/resume_view.html', {'resume': resume})
+    return render(request, 'resume/resume_detail.html', {'resume': resume})
